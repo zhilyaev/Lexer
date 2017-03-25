@@ -23,7 +23,7 @@ class Lexer {
         for(Map.Entry token : tokenMap.entrySet()) {
             buffer.append(String.format("|(?<%s>%s)", token.getKey(), token.getValue()));
         }
-
+        // Lex logic
         Pattern tokenPatterns = Pattern.compile(buffer.substring(1));
         Matcher matcher = tokenPatterns.matcher(input);
         while (matcher.find()) {

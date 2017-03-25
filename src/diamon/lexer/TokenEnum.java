@@ -5,7 +5,7 @@ public enum TokenEnum {
     // U should add your token here:
 
     OPERAND("[*|/|+|-]"),
-    //DIGEST("[0-9]"),
+    //NUMBER("\\d"),
     WHITESPACE("[ \t\f\r\n]+");
 
 
