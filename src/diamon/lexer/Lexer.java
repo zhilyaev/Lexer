@@ -7,22 +7,18 @@ import java.util.regex.Pattern;
 
 class Lexer {
     private TokenMap tokenMap;
-    private ArrayList<String> tokens;
-
+    private ArrayList<String> tokens = new ArrayList<>();
 
     Lexer (String input, TokenMap tokenMap) {
         this.tokenMap = tokenMap;
-        this.tokens = lex(input);
+        lex(input);
     }
     Lexer (String input) {
         this.tokenMap = new TokenMap();
-        this.tokens = lex(input);
-
+        lex(input);
     }
 
-    private ArrayList<String> lex(String input) {
-        ArrayList<String> tokens = new ArrayList<>();
-
+    private void lex(String input) {
         StringBuffer buffer = new StringBuffer();
         for(Map.Entry token : tokenMap.entrySet()) {
             buffer.append(String.format("|(?<%s>%s)", token.getKey(), token.getValue()));
@@ -36,12 +32,11 @@ class Lexer {
                     if(matcher.group(i) != null){
                         tokens.add(name); // {Здесь можно сделать генерацию кода}
                         break;
-                    }//else tokens.add()
+                    }
                     i++;
             }
 
         }
-        return tokens;
     }
 
     ArrayList<String> getTokens() {
