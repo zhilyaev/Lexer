@@ -9,6 +9,7 @@ class Lexer {
     private TokenMap tokenMap;
     private ArrayList<String> tokens = new ArrayList<>();
 
+    //private Iterator<String> iterator;
     Lexer (String input, TokenMap tokenMap) {
         this.tokenMap = tokenMap;
         lex(input);
@@ -23,6 +24,9 @@ class Lexer {
         for(Map.Entry token : tokenMap.entrySet()) {
             buffer.append(String.format("|(?<%s>%s)", token.getKey(), token.getValue()));
         }
+
+        //System.out.println(buffer);
+
         // Lex logic
         Pattern tokenPatterns = Pattern.compile(buffer.substring(1));
         Matcher matcher = tokenPatterns.matcher(input);
@@ -37,6 +41,18 @@ class Lexer {
             }
 
         }
+    }
+
+    private int current_i = 0;
+    public String current(){
+        if (current_i>=tokens.size()) return null;
+       else return tokens.get(current_i);
+    }
+
+    public String next(){
+        current_i++;
+        if (current_i>=tokens.size()) return null;
+        else return tokens.get(current_i);
     }
 
     ArrayList<String> getTokens() {

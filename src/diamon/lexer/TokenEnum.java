@@ -4,9 +4,15 @@ public enum TokenEnum {
 
     // U should add your token here:
 
-    OPERAND("[*|/|+|-]"),
     //NUMBER("\\d"),
-    WHITESPACE("[ \t\f\r\n]+");
+    WHITESPACE("\\s"),
+    AB("a|b"),
+    OPEN("\\("),
+    CLOSE("\\)"),
+    Y("\\*"),
+    Z("\\+");
+
+
 
 
     private final String pattern;
