@@ -1,4 +1,4 @@
-# HOW USE?
+# HOW TO USE IT?
 
 ### Default TokenMap
 ```java
